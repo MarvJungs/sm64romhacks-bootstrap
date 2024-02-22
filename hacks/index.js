@@ -4,13 +4,15 @@ async function main() {
     const mainSection = document.getElementsByTagName("main")[0];
     const hacks = await fetchAllHacks();
     mainSection.innerHTML = Searchbar(hacks.tags);
-    mainSection.innerHTML += Table(hacks.hacks);
+
+    const tableContainer = document.createElement('div');
+    tableContainer.id = 'hacksCollection';
+    tableContainer.innerHTML += Table(hacks.hacks);
+    mainSection.appendChild(tableContainer);
 
     mainSection.addEventListener("change", (e) => {
         if(e.target.id === "sortFilter") {
-            document.querySelector('#hacksCollection').remove();
-            console.log(document)
-            mainSection.innerHTML += Table(hacks.hacks.sort((a, b) => {
+            tableContainer.innerHTML = Table(hacks.hacks.sort((a, b) => {
                 switch(e.target.value) {
                     case "hack_name_asc":
                         return a.hack_name.toLowerCase().localeCompare(b.hack_name.toLowerCase());
@@ -40,16 +42,14 @@ async function main() {
             }));
         }
         if(e.target.id === "hack_tag_filter") {
-            document.querySelector('#hacksCollection').remove();
-            mainSection.innerHTML += Table(hacks.hacks.filter((hack) => {
+            tableContainer.innerHTML = Table(hacks.hacks.filter((hack) => {
                 return e.target.value.toLowerCase() === '' ? hack : hack.hack_tags.toLowerCase().includes(e.target.value.toLowerCase());
             }));
         }
     })
 
     mainSection.addEventListener("keyup", (e) => {
-            document.querySelector('#hacksCollection').remove();
-            mainSection.innerHTML += Table(hacks.hacks.filter((hack) => {
+            tableContainer.innerHTML = Table(hacks.hacks.filter((hack) => {
                 switch(e.target.id) {
                     case 'hack_name_filter':
                         return e.target.value.toLowerCase() === '' ? hack : hack.hack_name.toLowerCase().includes(e.target.value.toLowerCase());
@@ -72,7 +72,7 @@ function Table(hacks) {
     const tableRows = hacks.map((hack) => {
         return `
             <tr>
-                <td><a href="${hack.hack_url}">${hack.hack_name}</a></td>
+                <td><a href="/hacks/${hack.hack_url}">${hack.hack_name}</a></td>
                 <td>${hack.hack_author}</td>
                 <td>${hack.release_date}</td>
                 <td>${hack.hack_starcount}</td>
@@ -85,7 +85,7 @@ function Table(hacks) {
 
 
     return `
-        <table class="table table-hover" id='hacksCollection'>
+        <table class="table table-hover">
             <thead>
                 <tr>
                     <th scope="col">Hackname</th>
