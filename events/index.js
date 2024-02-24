@@ -68,6 +68,20 @@ async function main() {
                 break;
         }
     }
+    else {
+        switch (slug) {
+            case "relay2024":
+                eventContainer.innerHTML = Relay2024();
+                break;
+            case "league2023":
+                break;
+            case "league2022":
+                break;
+            default:
+                eventContainer.innerHTML = "Error :(";
+                break;
+        }
+    }
 }
 
 async function SRMPage(id) {
@@ -98,7 +112,7 @@ function Schedule(schedule) {
 
     const columns = schedule.columns.map((col) => {
         return `
-            <th>
+            <th scope="col">
                 ${col}
             </th>
         `
@@ -115,7 +129,7 @@ function Schedule(schedule) {
 
         return `
             <tr>
-                <td>
+                <td class="text-nowrap">
                     ${convertTimestampToDate(item.scheduled_t)}
                 </td>
                 <td>
@@ -129,13 +143,13 @@ function Schedule(schedule) {
 
 
     return `
-        <table class="table table-hover table-bordered table-sm">
+        <table class="table table-hover">
             <thead>
                 <tr>
-                    <th>
+                    <th scope="col">
                         Date
                     </th>
-                    <th>
+                    <th scope="col">
                         Time
                     </th>
                     ${columns}
@@ -198,6 +212,58 @@ function convertTimestampToDate(timestamp) {
     const time = days[d.getDay()] + ', ' + yyyy + '-' + mm + '-' + dd;
 
     return time;
+}
 
+function League2022() {
+    return `
 
+    `
+}
+
+function League2023() {
+    return `
+
+    `
+}
+
+function Relay2024() {
+    return `
+        <h1>Star Revenge 100% Relay</h1>
+        <p>
+            The Star Revenge 100% Relay is an invite-only relay event. A relay is essentially nothing other than a serie of events in such a way that the next event starts once the ongoing player has finished. The relay is going to take place on April 12th to April 14th and will be streamed to <a href="https://www.twitch.tv/sm64romhacks" target="_blank" rel="noreferrer"> the sm64romhacks Twitch Channel</a>!
+        </p>
+        The following Categories will take place in this:
+        <ul>
+            <li> Star Revenge 0: Galaxy of Origins - 122 Star </li>
+            <li> Star Revenge 0.5: The Unused Levels - 65/67/69 Star (Runners preference) </li>
+            <li> Star Revenge 1: Star Takeover - 101 Star </li>
+            <li> Star Revenge Redone 1.3 - 106 Star </li>
+            <li> Star Revenge 1.5: Star Takeover Redone - 125 Star </li>
+            <li> Star Revenge 2 Act 1: To The Moon - 85 Star </li>
+            <li> Star Revenge 2 Act 2: Night of Doom - 160 Star </li>
+            <li> Star Revenge 2.5: Remnant of Doom - 115 Star </li>
+            <li> Star Revenge 3: Mario on An Saoire 64 - 65 Star </li>
+            <li> Star Revenge 3.5: Vacation of Cursed Dreams - 133 Star </li>
+            <li> Star Revenge 3.9: Dreamish Block Beats - 20 Star </li>
+            <li> Star Revenge 4: The Kedama Takeover - 100 Star </li>
+            <li> Star Revenge 4.5: The Kedama Takeover Rewritten - 100 Star </li>
+            <li> Star Revenge 4.9: Adulterated Reality - 140 Star </li>
+            <li> Star Revenge 5: Neo Blue Realm - 70 Star </li>
+            <li> Star Revenge 5.5: Destroyed Memories - 70 Star </li>
+            <li> Star Revenge 6: Luigi's Adventure - 121 Star </li>
+            <li> Star Revenge 6.25: Luigi's Adventure DX - 216 Star </li>
+            <li> Star Revenge 6.5: Wrath of the Dimensional Flower - 70 Star </li>
+            <li> Star Revenge 6.9: Luigi Lost in Time - 25/27 Star (Runners preference) </li>
+            <li> Star Revenge 7: Park of Time - 121 Star </li>
+            <li> Star Revenge 7.5: Kedowser's Return - 131 Star </li>
+            <li> Star Revenge 8: Scepter of Hope - 121 Star </li>
+            <li> Star Revenge X: Discord Star Adventure - 100 Star </li>
+        </ul>
+        <p>
+            Interested in catching the event? Be sure to keep an eye on this page as information gets continously updated! 
+        </p>
+        <p>
+            The event is estimated to take around 50 hours.
+        </p>
+    `
 }
