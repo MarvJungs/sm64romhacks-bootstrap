@@ -2,6 +2,22 @@ document.addEventListener("DOMContentLoaded", Header);
 
 function Header() {
     const header = document.getElementsByTagName("header")[0];
+    let time;
+    setInterval(() => {
+        const t = new Date();
+        const options = {
+            year: 'numeric',
+            month: 'numeric',
+            day: 'numeric',
+            hour: 'numeric',
+            minute: 'numeric',
+            second: 'numeric',
+            hour12: false
+        };
+        time =  new Intl.DateTimeFormat('sv', options).format(t);
+        document.querySelector('#time').innerHTML = time;
+    }, 1000);
+
     header.innerHTML = `
         <nav class="navbar navbar-expand-lg">
             <a class="navbar-brand" href="/"><img class="img-responsive d-inline-block align-text-top" src="/_assets/_img/logo.png" alt="Logo" width="160" height="90"></a>
@@ -75,5 +91,6 @@ function Header() {
                 </ul>
             </div>
         </nav>
+        <p class='text-end' id='time'></p>
     `
 }
