@@ -72,7 +72,7 @@ function Table(hacks) {
     const tableRows = hacks.map((hack) => {
         return `
             <tr>
-                <td><a href="/hacks/${hack.hack_url}">${hack.hack_name}</a></td>
+                <td><a class="link-info link-underline-opacity-0" href="/hacks/${hack.hack_url}">${hack.hack_name}</a></td>
                 <td>${hack.hack_author}</td>
                 <td>${hack.release_date}</td>
                 <td>${hack.hack_starcount}</td>

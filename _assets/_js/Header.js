@@ -27,13 +27,13 @@ function Header() {
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="/hacks">ROM Hacks </a>
+                        <a class="nav-link link-info link-underline-opacity-0" href="/hacks">ROM Hacks </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/megapack">Megapack</a>
+                        <a class="nav-link link-info link-underline-opacity-0" href="/megapack">Megapack</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link link-info link-underline-opacity-0 dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Events
                         </a>
                         <ul class="dropdown-menu">
@@ -51,7 +51,7 @@ function Header() {
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link link-info link-underline-opacity-0 dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Gameplay Tools
                         </a>
                         <ul class="dropdown-menu">
@@ -62,18 +62,18 @@ function Header() {
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/faq">FAQ</a>
+                        <a class="nav-link link-info link-underline-opacity-0" href="/faq">FAQ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/streams">Streams</a>
+                        <a class="nav-link link-info link-underline-opacity-0" href="/streams">Streams</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="http://discord.sm64romhacks.com">Discord</a>
+                        <a class="nav-link link-info link-underline-opacity-0" href="http://discord.sm64romhacks.com">Discord</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="https://ko-fi.com/marvjungs">Support!</a>
+                        <a class="nav-link link-info link-underline-opacity-0" href="https://ko-fi.com/marvjungs">Support!</a>
                     </li>
-                    <li class="nav-item"><a href="/login" class="nav-link" title="By logging in you agree with our Terms of Service">Login</a></li>
+                    <li class="nav-item"><a href="/login" class="nav-link link-info link-underline-opacity-0" title="By logging in you agree with our Terms of Service">Login</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <img src="" width=16 height=16 />&nbsp;					

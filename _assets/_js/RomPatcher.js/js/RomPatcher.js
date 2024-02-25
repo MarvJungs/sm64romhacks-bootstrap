@@ -28,10 +28,10 @@ try{
 	webWorkerApply=new Worker('/_assets/_js/RomPatcher.js/js/worker_apply.js');
 	webWorkerApply.onmessage = event => { // listen for events from the worker
 		//retrieve arraybuffers back from webworker
-		if(!el('checkbox-removeheader').checked && !el('checkbox-addheader').checked){ //when adding/removing header we don't need the arraybuffer back since we made a copy previously
+		//when adding/removing header we don't need the arraybuffer back since we made a copy previously
 			romFile._u8array=event.data.romFileU8Array;
 			romFile._dataView=new DataView(romFile._u8array.buffer);
-		}
+		
 		patchFile._u8array=event.data.patchFileU8Array;
 		patchFile._dataView=new DataView(patchFile._u8array.buffer);
 				
@@ -179,27 +179,16 @@ function fetchPatch(customPatchIndex, compressedFileIndex){
 }
 
 function _parseROM(){
-	el('checkbox-addheader').checked=false;
-	el('checkbox-removeheader').checked=false;
-
 	if(romFile.getExtension()!=='jar' && romFile.readString(4).startsWith(ZIP_MAGIC)){
 		ZIPManager.parseFile(romFile);
 		setTabApplyEnabled(false);
 	}else{
 		if(headerSize=canHaveFakeHeader(romFile)){
-			el('row-addheader').className='row m-b';
 			if(headerSize<1024){
 				el('headersize').innerHTML=headerSize+'b';
 			}else{
 				el('headersize').innerHTML=parseInt(headerSize/1024)+'kb';
 			}
-			el('row-removeheader').className='row m-b hide';
-		}else if(headerSize=hasHeader(romFile)){
-			el('row-addheader').className='row m-b hide';
-			el('row-removeheader').className='row m-b';
-		}else{
-			el('row-addheader').className='row m-b hide';
-			el('row-removeheader').className='row m-b hide';
 		}
 
 		updateChecksums(romFile, 0);
@@ -393,7 +382,7 @@ function updateChecksums(file, startOffset, force){
 
 function validateSource(){
 	if(patch && romFile && typeof patch.validateSource !== 'undefined'){
-		if(patch.validateSource(romFile, el('checkbox-removeheader').checked && hasHeader(romFile))){
+		if(patch.validateSource(romFile, false && hasHeader(romFile))){
 			el('crc32').className='valid';
 			setMessage('apply');
 		}else{
@@ -518,19 +507,7 @@ function preparePatchedRom(originalRom, patchedRom, headerSize){
 		patchedRom.fileName=originalRom.fileName.replace(/\.([^\.]*?)$/, ' (patched).$1');
 	}
 	patchedRom.fileType=originalRom.fileType;
-	if(headerSize){
-		if(el('checkbox-removeheader').checked){
-			var patchedRomWithOldHeader=new MarcFile(headerSize+patchedRom.fileSize);
-			oldHeader.copyToFile(patchedRomWithOldHeader, 0);
-			patchedRom.copyToFile(patchedRomWithOldHeader, 0, patchedRom.fileSize, headerSize);
-			patchedRomWithOldHeader.fileName=patchedRom.fileName;
-			patchedRomWithOldHeader.fileType=patchedRom.fileType;
-			patchedRom=patchedRomWithOldHeader;
-		}else if(el('checkbox-addheader').checked){
-			patchedRom=patchedRom.slice(headerSize);
-
-		}
-	}
+	
 
 
 
@@ -564,26 +541,7 @@ function preparePatchedRom(originalRom, patchedRom, headerSize){
 }*/
 function applyPatch(p,r,validateChecksums){
 	if(p && r){
-		if(headerSize){
-			if(el('checkbox-removeheader').checked){
-				//r._dataView=new DataView(r._dataView.buffer, headerSize);
-				oldHeader=r.slice(0,headerSize);
-				r=r.slice(headerSize);
-			}else if(el('checkbox-addheader').checked){
-				var romWithFakeHeader=new MarcFile(headerSize+r.fileSize);
-				romWithFakeHeader.fileName=r.fileName;
-				romWithFakeHeader.fileType=r.fileType;
-				r.copyToFile(romWithFakeHeader, 0, r.fileSize, headerSize);
-
-				//add FDS header
-				if(/\.fds$/.test(r.FileName) && r.fileSize%65500===0){
-					//romWithFakeHeader.seek(0);
-					romWithFakeHeader.writeBytes([0x46, 0x44, 0x53, 0x1a, r.fileSize/65500]);
-				}
-
-				r=romWithFakeHeader;
-			}
-		}
+		
 
 		if(CAN_USE_WEB_WORKERS){
 			setMessage('apply', 'applying_patch', 'loading');
@@ -658,18 +616,6 @@ function setTabApplyEnabled(status){
 		setElementEnabled('button-apply', false);
 	}
 }
-function setCreatorMode(creatorMode){
-	if(creatorMode){
-		el('tab0').style.display='none';
-		el('tab1').style.display='block';
-		el('switch-create').className='switch enabled'
-	}else{
-		el('tab0').style.display='block';
-		el('tab1').style.display='none';
-		el('switch-create').className='switch disabled'
-	}
-}
-
 
 
 
