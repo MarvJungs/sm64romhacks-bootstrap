@@ -74,8 +74,10 @@ async function main() {
                 eventContainer.innerHTML = Relay2024();
                 break;
             case "league2023":
+                eventContainer.innerHTML = League2023();
                 break;
             case "league2022":
+                eventContainer.innerHTML = League2022();
                 break;
             default:
                 eventContainer.innerHTML = "Error :(";
@@ -214,15 +216,102 @@ function convertTimestampToDate(timestamp) {
     return time;
 }
 
-function League2022() {
+function League2023() {
     return `
 
     `
 }
 
-function League2023() {
+function League2022() {
     return `
+        <h1>SM64 ROMHACKS LEAGUE (September 17th - November 30th)</h1>
+        <hr/>
+        <h2 class="text-underlined">TABLE OF CONTENTS</h2>
+        <ol>
+            <li>What is a League?</li>
+            <li>How are Teams determined?</li>
+            <li>How Do I earn points?</li>
+            <ol>
+                <li>Points Calculator</li>
+            </ol>
+            <li>Do I need to have PBs on speedrun.com</li>
+            <li>What categories are eligible?</li>
+            <li>Can I still join the League?</li>
+            <li>Leaderboard</li>
+            <ol>
+                <li>Team Leaderboard</li>
+                <li>User Leaderboard</li>
+            </ol>
+            <li>Race Results</li>
+            <ol>
+                <li>Race 1: Super Mario Star Road 20 Star</li>
+                <li>Race 2: Despair Mario's Gambit 64 0 Star</li>
+                <li>Race 3: Star Revenge 2 Act I To The Moon 16 Star</li>
+                <li>Race 4: Super Mario 74 10 Star</li>
+                <li>Race 5: Lug's Delightful Dioramas 51 Star</li>
+                <li>Race 6: Super Mario 74 50 Star</li>
+                <li>Race 7: Despair Mario's Gambit 53 Star</li>
+                <li>Race 8: Super Mario Star Road 80 Star</li>
+                <li>Race 9: Star Revenge 2 Act I To The Moon 41 Star</li>
+                <li>Race 10: Super Mario 74 110 Star</li>
+                <li>Race 11: Super Mario Star Road 130 Star</li>
+                <li>Race 12: Star Revenge 2 Act I To The Moon 85 Star</li>
+                <li>Race 13: Lug's Delightful Dioramas 74 Star</li>
+                <li>Race 14: Despair Mario's Gambit 64 120 Star</li>
+            </ol>
+        </ol>
+        <hr/>
+        The ongoing league features 5 hacks and multiple categories. The league starts immediately after the draft held on 17th September 2022 and runs through November 30th. The current individual user leaderboard can be found <a href="#userLeaderboard">here</a>.
+        
+        <h2>WHAT IS A LEAGUE?</h2>
+        League is an community open event to any speedrunners. Participants are drafted onto teams and can earn points for their team by getting PBs in the selected categories and submitting them to speedrun.com. Participants may also participate in the races held every weekend and gain points for participation and placement in the race.
 
+        <h2>HOW ARE TEAMS DETERMINED?</h2>
+        The teams are determined by a draft. Players that opt to be a captain are the ones that draft their teams. Anyone can sign up to be a potential captain but the number of captains depends on how many people sign up. Generally, priority will be given to past league participants and known community members, but we will try to be as fair as possible to everyone. Everyone that signs up is a garanteed spot. If we do not have an even number of players per team, we will try to recruit more runners for the smaller teams and/or adjust the team score for balance.
+
+        <h2>HOW DO I EARN POINTS</h2>
+        The point system is subject to change as more people submit. A lot of hacks do not have many runs so it is hard to assign points but in general these are the ways to earn points:
+        <ol>
+            <li>For each main category a plazyer can claim a lump sum by getting <u>ANY PB</u> in that category regardless their time. This is meant to encourage people to do multiple categories. These &quot;Bonus points&quot; can only be claimed once per category.</li>
+            <li>You earn a certain number of points per second shaved off your pb under certain time thresholds. This is tiered so that you get more points per second as your times get better.</li>
+            <li>Races will be held every weekend for points. You will get points for participating and bonus points for how well you placed. This is not a big way to get points, just a thing to encourage more runs and reward people will small points for those who are still trying and perhaps not pbing.</li>
+        </ol>
+
+        <h2>LEAGUE 2022 POINTS CALCULATOR</h2>
+        TBD
+
+        <h2>DO I NEED TO HAVE MY PBS ON SPEEDRUN.COM?</h2>
+        To keep track of points, PBs will have to be submitted to speedrun.com. A mod can always submit for you if you prefer not to have a speedrun.com account.
+
+        <h2>WHICH CATEGORIES ARE ELIGIBLE</h2>
+        <ul>
+            <li>Despair Mario's Gambit 64 - 0 Star</li>
+            <li>Despair Mario's Gambit 64 - 53 Star</li>
+            <li>Despair Mario's Gambit 64 - 120 Star</li>
+            <li>Lug's Delightful Dioramas - 51 Star</li>
+            <li>Lug's Delightful Dioramas - 74 Star</li>
+            <li>Star Revenge 2 Act 1: To the Moon - 16 Star</li>
+            <li>Star Revenge 2 Act 1: To the Moon - 41 Star</li>
+            <li>Star Revenge 2 Act 1: To the Moon - 85 Star</li>
+            <li>Super Mario Star Road - 20 Star</li>
+            <li>Super Mario Star Road - 80 Star</li>
+            <li>Super Mario Star Road - 130 Star</li>
+            <li>Super Mario 74 - 10 Star</li>
+            <li>Super Mario 74 - 50 Star</li>
+            <li>Super Mario 74 - 110 Star</li>
+            <li>Super Mario 74 - 151 Star</li>
+        </ul>
+
+        <h2>CAN I STILL JOIN THE LEAGUE</h2>
+        No, unfortunately all spaces are filled out now. Feel free to watch the league progressing by progressively checking out this page or supporting the runners!
+
+        <h2>LEADERBOARD</h2>
+        
+        <h3>TEAM LEADERBOARD</h3>
+        TBD
+
+        <h3>USER LEADERBOARD</h3>
+        TBD
     `
 }
 

@@ -45,7 +45,7 @@ function main() {
 
 					<div class="buttons">
 						<span id="message-apply" class="message"></span>
-						<button id="button-apply" data-localize="apply_patch" class="disabled" disabled>Apply patch</button>
+						<button id="button-apply" data-localize="apply_patch" class="btn btn-primary disabled" disabled>Apply patch</button>
 					</div>
 				</div>
 			</div>
